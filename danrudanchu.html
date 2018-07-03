@@ -1,0 +1,70 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>danrudanchu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+    function mimg(list,images) {
+        for(var i=0;i<list.length;i++){
+
+
+
+            list[i].className = '';
+        }
+        list[images].className='img-on';
+    }
+    function mtitle(list,title){
+        for(var i=0;i<list.length;i++){
+            if(list[i].className=='on'){
+                list[i].className='';
+            }
+        }
+        list[title].className='on';
+    }
+    </script>
+</head>
+<body>
+    <div class='main'>
+        <div id='images'>
+          <img class="img-on" src='img/timg (1).jpg'>
+          <img class src='img/timg (2).jpg'>
+          <img class src='img/timg (3).jpg'>
+          <img class src='img/timg (4).jpg'>
+          <img class src='img/timg (5).jpg'>
+        </div>
+        <div id="title">
+            <span class="on">图一</span>
+            <span class>图二</span>
+            <span class>图三</span>
+            <span class>图四</span>
+            <span class>图五</span>
+        </div>
+        <script>
+                var spans = document.querySelectorAll('#title span');
+                var imgs = document.querySelectorAll('#images img'); 
+                var n = 0;//定义一个变量来记录当前图片
+                setInterval(function(){
+                n++;
+                /*for(let i =0;i <imgs.length;i++){
+                imgs[i].className = ''
+                spans[i].className = ''      //清除当前img和span的类
+                }*/
+                if(n>=spans.length){
+                n = 0;
+                }
+                mtitle(spans,n)
+                mimg(imgs,n)//当前图片运行mtitle和mimg函数
+                },2000)
+                for(let i = 0;i < spans.length;i++){
+                    spans[i].onclick = function(){
+                        mtitle(spans,i)
+                        mimg(imgs,i)
+                        n=i;
+                    }
+                }
+        </script>
+</body>
+</html>
